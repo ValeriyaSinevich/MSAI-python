@@ -1,9 +1,9 @@
-PACKAGES="seminar_package"
+REQUIREMENTS_DEV="requirements-dev.txt"
+REQUIREMENTS="requirements.txt"
+PACKAGE_NAME="actions-example"
 
-all: install black clean
-
-black:
-	@black ${PACKAGES}
+test:
+	@py.test tests
 
 clean:
 	@rm -rf `find . -name __pycache__`
@@ -24,5 +24,21 @@ clean:
 	@rm -f .develop
 	@rm -f .flake
 
-install:
-	@pip install -r requirements.txt
+uninstall:
+	@pip uninstall ${PACKAGE_NAME} -y
+
+install-dev: uninstall
+	@pip install -r ${REQUIREMENTS_DEV}
+	@pip install -e .
+
+install: uninstall
+	@pip install -r ${REQUIREMENTS}
+	@echo "Done"
+
+install-pre-commit: install-dev
+	@pre-commit install
+
+run-pre-commit:
+	@pre-commit run
+
+.PHONY: all install-dev uninstall clean test
