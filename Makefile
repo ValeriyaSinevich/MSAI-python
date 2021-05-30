@@ -1,6 +1,6 @@
 REQUIREMENTS_DEV="requirements-dev.txt"
 REQUIREMENTS="requirements.txt"
-PACKAGE_NAME="actions-example"
+PACKAGE_NAME="functions_package"
 
 test:
 	@py.test tests

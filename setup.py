@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 from setuptools import find_packages, setup
@@ -16,7 +17,7 @@ def parse_requirements() -> tuple:
 
 setup(
     name='msai-package',
-    packages=find_packages(exclude=('tests', )),
-    python_requires='~=3.7',
+    packages=find_packages(exclude=('tests',)),
+    python_requires='>=3.6',
     install_requires=parse_requirements(),
 )
