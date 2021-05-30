@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print python version
-        run: python --V
+        run: python -V
 
   test:
     runs-on: ubuntu-latest
